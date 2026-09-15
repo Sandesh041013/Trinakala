@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <title>Trina Kala | Connect</title>
 
 <!-- Font Awesome -->
@@ -12,109 +13,1109 @@
 >
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
-  background: #efe7d7;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   color: #2f251d;
+
   display: flex;
   justify-content: center;
-  padding: 32px 16px;
+  align-items: center;
+
+  padding:
+    clamp(18px, 4vw, 40px)
+    clamp(12px, 4vw, 30px);
+
+  position: relative;
+
+  overflow-x: hidden;
+
+  background: #dfcfb5;
 }
+
+
+/* =========================================================
+   FABRIC BACKGROUND
+========================================================= */
+
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: -3;
+
+  background-color: #dfcfb5;
+
+  background-image:
+
+    repeating-linear-gradient(
+      0deg,
+      rgba(80,55,35,.08) 0px,
+      rgba(80,55,35,.08) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.13) 0px,
+      rgba(255,255,255,.13) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+
+/* =========================================================
+   DHAKA SVG
+========================================================= */
+
+.dhaka-pattern {
+
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -2;
+
+  pointer-events: none;
+
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
 
 .card {
-  width: min(430px, 100%);
+
+  width: min(
+    430px,
+    calc(100vw - 24px)
+  );
+
+  /*
+    Prevent the card from becoming unnecessarily
+    tall on large screens.
+  */
+
+  min-height: auto;
+
   text-align: center;
-  background: #f8f2e7;
-  border: 1px solid #c9b99d;
-  border-radius: 28px;
-  padding: 30px 22px 25px;
-  box-shadow: 0 15px 45px #4b38201c;
+
+  background: rgba(248,242,231,.96);
+
+  border:
+    1px solid #c9b99d;
+
+  border-radius:
+    clamp(24px, 5vw, 30px);
+
+  padding:
+    clamp(24px, 6vw, 32px)
+    clamp(16px, 5vw, 22px)
+    clamp(22px, 5vw, 28px);
+
+  box-shadow:
+    0 18px 50px rgba(75,56,32,.18),
+    0 4px 12px rgba(75,56,32,.08);
+
+  position: relative;
+
+  overflow: hidden;
 }
 
-/* Logo */
+
+/* =========================================================
+   CARD FABRIC TEXTURE
+========================================================= */
+
+.card::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .18;
+
+  background-image:
+
+    repeating-linear-gradient(
+      0deg,
+      rgba(80,55,35,.08) 0px,
+      rgba(80,55,35,.08) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.14) 0px,
+      rgba(255,255,255,.14) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+
+/* Keep content above texture */
+
+.card > * {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
 .logo {
-  width: 150px;
-  height: 150px;
+
+  width:
+    clamp(125px, 38vw, 155px);
+
+  height:
+    clamp(125px, 38vw, 155px);
+
   object-fit: contain;
-  margin: 0 auto 8px;
+
   display: block;
+
+  margin:
+    0 auto
+    clamp(2px, 1vw, 8px);
+
 }
 
-.brand {
-  font-size: 31px;
-  letter-spacing: 4px;
-  font-weight: 700;
-}
+
+/* =========================================================
+   TAGLINE
+========================================================= */
 
 .tag {
-  font-size: 13px;
-  letter-spacing: 1.5px;
-  line-height: 1.6;
-  margin: 9px 0 28px;
+
+  font-size:
+    clamp(10px, 2.8vw, 13px);
+
+  letter-spacing:
+    clamp(1px, .45vw, 1.8px);
+
+  line-height: 1.65;
+
+  margin:
+    8px auto
+    clamp(22px, 6vw, 30px);
+
   color: #75614b;
+
+  max-width: 360px;
 }
 
-/* Social links */
+
+/* =========================================================
+   SOCIAL LINKS
+========================================================= */
+
 .social-link {
+
+  width: 100%;
+
+  min-height:
+    clamp(62px, 17vw, 72px);
+
   display: flex;
+
   align-items: center;
-  gap: 15px;
+
+  gap:
+    clamp(9px, 3vw, 15px);
+
   text-decoration: none;
+
   color: #2f251d;
-  background: #eadfc9;
-  border: 1px solid #cdbb9d;
-  border-radius: 16px;
-  padding: 15px 18px;
-  margin: 12px 0;
+
+  background:
+    rgba(234,223,201,.90);
+
+  border:
+    1px solid #cdbb9d;
+
+  border-radius:
+    clamp(14px, 4vw, 18px);
+
+  padding:
+    clamp(10px, 3vw, 15px)
+    clamp(12px, 4vw, 18px);
+
+  margin:
+    clamp(9px, 3vw, 12px)
+    0;
+
   font-weight: 700;
-  transition: all 0.25s ease;
+
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
 }
 
-.social-link:hover {
-  transform: translateY(-3px);
-  background: #dfd0b4;
-  box-shadow: 0 8px 20px rgba(75, 56, 32, 0.12);
+
+/* Desktop hover */
+
+@media (hover: hover) {
+
+  .social-link:hover {
+
+    transform:
+      translateY(-3px);
+
+    background:
+      #dfd0b4;
+
+    box-shadow:
+      0 8px 20px rgba(75,56,32,.12);
+  }
+
 }
 
-/* Real icons */
+
+/* =========================================================
+   ICON
+========================================================= */
+
 .icon {
-  width: 30px;
-  height: 30px;
+
+  width:
+    clamp(27px, 8vw, 32px);
+
+  height:
+    clamp(27px, 8vw, 32px);
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
-  font-size: 21px;
+
+  font-size:
+    clamp(19px, 6vw, 22px);
+
   flex-shrink: 0;
+
 }
+
+
+/* =========================================================
+   SOCIAL NAME
+========================================================= */
 
 .social-name {
+
   flex: 1;
+
   text-align: left;
+
+  font-size:
+    clamp(15px, 4.5vw, 17px);
+
+  line-height: 1.2;
+
 }
+
+
+/* =========================================================
+   ARROW
+========================================================= */
 
 .arrow {
-  font-size: 13px;
-  opacity: 0.55;
+
+  font-size:
+    clamp(11px, 3.5vw, 14px);
+
+  opacity: .55;
+
+  flex-shrink: 0;
+
 }
 
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .foot {
-  margin-top: 28px;
-  font-size: 11px;
-  letter-spacing: 2px;
+
+  margin-top:
+    clamp(20px, 6vw, 28px);
+
+  font-size:
+    clamp(8px, 2.6vw, 11px);
+
+  letter-spacing:
+    clamp(1.2px, .6vw, 2px);
+
+  line-height: 1.5;
+
   color: #88745c;
+
 }
+
+
+/* =========================================================
+   TABLETS
+========================================================= */
+
+@media (min-width: 600px) {
+
+  body {
+
+    padding: 35px 24px;
+
+  }
+
+  .card {
+
+    width: 430px;
+
+    padding:
+      30px
+      22px
+      26px;
+
+  }
+
+  .logo {
+
+    width: 150px;
+
+    height: 150px;
+
+  }
+
+  .social-link {
+
+    min-height: 70px;
+
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+  body {
+
+    padding:
+      14px 10px;
+
+    align-items: flex-start;
+
+  }
+
+  .card {
+
+    width:
+      calc(100vw - 20px);
+
+    margin:
+      8px auto;
+
+    padding:
+      22px 14px 20px;
+
+    border-radius: 23px;
+
+  }
+
+  .logo {
+
+    width: 125px;
+
+    height: 125px;
+
+    margin-bottom: 2px;
+
+  }
+
+  .tag {
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    margin-top: 5px;
+
+    margin-bottom: 22px;
+
+  }
+
+  .social-link {
+
+    min-height: 59px;
+
+    padding:
+      9px 11px;
+
+    gap: 8px;
+
+    border-radius: 14px;
+
+  }
+
+  .icon {
+
+    width: 27px;
+
+    height: 27px;
+
+    font-size: 19px;
+
+  }
+
+  .social-name {
+
+    font-size: 14px;
+
+  }
+
+  .arrow {
+
+    font-size: 11px;
+
+  }
+
+  .foot {
+
+    margin-top: 20px;
+
+    font-size: 8px;
+
+    letter-spacing: 1.4px;
+
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 330px) {
+
+  body {
+
+    padding:
+      8px;
+
+  }
+
+  .card {
+
+    width:
+      calc(100vw - 16px);
+
+    padding:
+      18px 11px;
+
+  }
+
+  .logo {
+
+    width: 110px;
+
+    height: 110px;
+
+  }
+
+  .tag {
+
+    font-size: 8px;
+
+    letter-spacing: .7px;
+
+  }
+
+  .social-link {
+
+    min-height: 54px;
+
+    padding:
+      8px 9px;
+
+  }
+
+  .icon {
+
+    width: 25px;
+
+    font-size: 17px;
+
+  }
+
+  .social-name {
+
+    font-size: 13px;
+
+  }
+
+  .arrow {
+
+    font-size: 10px;
+
+  }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONES
+========================================================= */
+
+@media (max-height: 600px) and (orientation: landscape) {
+
+  body {
+
+    align-items: flex-start;
+
+    padding:
+      15px;
+
+  }
+
+  .card {
+
+    margin:
+      0 auto;
+
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+
+    scroll-behavior: auto;
+
+  }
+
+  .social-link {
+
+    transition: none;
+
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
+
+<!-- =======================================================
+     DHAKA BACKGROUND
+======================================================== -->
+
+<svg
+  class="dhaka-pattern"
+  viewBox="0 0 1000 1000"
+  preserveAspectRatio="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+
+  <!-- =====================================================
+       TOP LEFT
+  ====================================================== -->
+
+  <g>
+
+    <path
+      fill="#a82e4e"
+      d="
+      M0 0
+      H190
+      V35
+      H225
+      V75
+      H260
+      V115
+      H225
+      V150
+      H190
+      V185
+      H150
+      V220
+      H110
+      V255
+      H70
+      V290
+      H35
+      V325
+      H0
+      Z
+      "
+    />
+
+    <path
+      fill="#3d3636"
+      d="
+      M0 80
+      H100
+      V115
+      H135
+      V150
+      H170
+      V190
+      H135
+      V225
+      H100
+      V260
+      H60
+      V225
+      H0
+      Z
+      "
+    />
+
+    <path
+      fill="#c9793e"
+      d="
+      M190 0
+      H300
+      V35
+      H335
+      V75
+      H300
+      V110
+      H265
+      V145
+      H230
+      V110
+      H195
+      V75
+      H160
+      V35
+      H190
+      Z
+      "
+    />
+
+    <path
+      fill="#70777a"
+      d="
+      M0 300
+      H55
+      V335
+      H90
+      V370
+      H125
+      V405
+      H90
+      V440
+      H55
+      V475
+      H0
+      Z
+      "
+    />
+
+  </g>
+
+
+  <!-- =====================================================
+       TOP RIGHT
+  ====================================================== -->
+
+  <g>
+
+    <path
+      fill="#a82e4e"
+      d="
+      M1000 0
+      H810
+      V35
+      H775
+      V75
+      H740
+      V115
+      H775
+      V150
+      H810
+      V185
+      H850
+      V220
+      H890
+      V255
+      H930
+      V290
+      H965
+      V325
+      H1000
+      Z
+      "
+    />
+
+    <path
+      fill="#3d3636"
+      d="
+      M1000 80
+      H900
+      V115
+      H865
+      V150
+      H830
+      V190
+      H865
+      V225
+      H900
+      V260
+      H940
+      V225
+      H1000
+      Z
+      "
+    />
+
+    <path
+      fill="#c9793e"
+      d="
+      M810 0
+      H700
+      V35
+      H665
+      V75
+      H700
+      V110
+      H735
+      V145
+      H770
+      V110
+      H805
+      V75
+      H840
+      V35
+      H810
+      Z
+      "
+    />
+
+    <path
+      fill="#70777a"
+      d="
+      M1000 300
+      H945
+      V335
+      H910
+      V370
+      H875
+      V405
+      H910
+      V440
+      H945
+      V475
+      H1000
+      Z
+      "
+    />
+
+  </g>
+
+
+  <!-- =====================================================
+       BOTTOM LEFT
+  ====================================================== -->
+
+  <g>
+
+    <path
+      fill="#a82e4e"
+      d="
+      M0 1000
+      H190
+      V965
+      H225
+      V925
+      H260
+      V885
+      H225
+      V850
+      H190
+      V815
+      H150
+      V780
+      H110
+      V745
+      H70
+      V710
+      H35
+      V675
+      H0
+      Z
+      "
+    />
+
+    <path
+      fill="#3d3636"
+      d="
+      M0 920
+      H100
+      V885
+      H135
+      V850
+      H170
+      V810
+      H135
+      V775
+      H100
+      V740
+      H60
+      V775
+      H0
+      Z
+      "
+    />
+
+    <path
+      fill="#c9793e"
+      d="
+      M190 1000
+      H300
+      V965
+      H335
+      V925
+      H300
+      V890
+      H265
+      V855
+      H230
+      V890
+      H195
+      V925
+      H160
+      V965
+      H190
+      Z
+      "
+    />
+
+  </g>
+
+
+  <!-- =====================================================
+       BOTTOM RIGHT
+  ====================================================== -->
+
+  <g>
+
+    <path
+      fill="#a82e4e"
+      d="
+      M1000 1000
+      H810
+      V965
+      H775
+      V925
+      H740
+      V885
+      H775
+      V850
+      H810
+      V815
+      H850
+      V780
+      H890
+      V745
+      H930
+      V710
+      H965
+      V675
+      H1000
+      Z
+      "
+    />
+
+    <path
+      fill="#3d3636"
+      d="
+      M1000 920
+      H900
+      V885
+      H865
+      V850
+      H830
+      V810
+      H865
+      V775
+      H900
+      V740
+      H940
+      V775
+      H1000
+      Z
+      "
+    />
+
+    <path
+      fill="#c9793e"
+      d="
+      M810 1000
+      H700
+      V965
+      H665
+      V925
+      H700
+      V890
+      H735
+      V855
+      H770
+      V890
+      H805
+      V925
+      H840
+      V965
+      H810
+      Z
+      "
+    />
+
+  </g>
+
+
+  <!-- =====================================================
+       SIDE PIXELS
+  ====================================================== -->
+
+  <g opacity=".9">
+
+    <!-- LEFT -->
+
+    <rect
+      x="0"
+      y="470"
+      width="42"
+      height="42"
+      fill="#a82e4e"
+    />
+
+    <rect
+      x="42"
+      y="512"
+      width="42"
+      height="42"
+      fill="#3d3636"
+    />
+
+    <rect
+      x="0"
+      y="554"
+      width="42"
+      height="42"
+      fill="#c9793e"
+    />
+
+    <rect
+      x="42"
+      y="596"
+      width="42"
+      height="42"
+      fill="#70777a"
+    />
+
+
+    <!-- RIGHT -->
+
+    <rect
+      x="958"
+      y="470"
+      width="42"
+      height="42"
+      fill="#a82e4e"
+    />
+
+    <rect
+      x="916"
+      y="512"
+      width="42"
+      height="42"
+      fill="#3d3636"
+    />
+
+    <rect
+      x="958"
+      y="554"
+      width="42"
+      height="42"
+      fill="#c9793e"
+    />
+
+    <rect
+      x="916"
+      y="596"
+      width="42"
+      height="42"
+      fill="#70777a"
+    />
+
+  </g>
+
+</svg>
+
+
+<!-- =======================================================
+     MAIN CARD
+======================================================== -->
+
 <main class="card">
+
+
+  <!-- LOGO -->
 
   <img
     class="logo"
@@ -122,92 +1123,140 @@ body {
     alt="Trina Kala logo"
   >
 
-  <!-- <div class="brand">TRINA KALA</div> -->
+
+  <!-- TAGLINE -->
 
   <div class="tag">
     TRADITIONAL CRAFT • CONTEMPORARY EXPRESSION
   </div>
 
 
-  <!-- Instagram -->
+  <!-- =====================================================
+       INSTAGRAM
+  ====================================================== -->
+
   <a
     class="social-link"
     href="https://www.instagram.com/trinakala_/"
     target="_blank"
     rel="noopener noreferrer"
   >
+
     <span class="icon">
+
       <i class="fa-brands fa-instagram"></i>
+
     </span>
 
-    <span class="social-name">Instagram</span>
+    <span class="social-name">
+      Instagram
+    </span>
 
     <span class="arrow">
+
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
     </span>
+
   </a>
 
 
-  <!-- Facebook -->
+  <!-- =====================================================
+       FACEBOOK
+  ====================================================== -->
+
   <a
     class="social-link"
     href="https://www.facebook.com/share/1H6WJQoeAz/?mibextid=wwXIfr"
     target="_blank"
     rel="noopener noreferrer"
   >
+
     <span class="icon">
+
       <i class="fa-brands fa-facebook-f"></i>
+
     </span>
 
-    <span class="social-name">Facebook</span>
+    <span class="social-name">
+      Facebook
+    </span>
 
     <span class="arrow">
+
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
     </span>
+
   </a>
 
 
-  <!-- TikTok -->
+  <!-- =====================================================
+       TIKTOK
+  ====================================================== -->
+
   <a
     class="social-link"
     href="https://www.tiktok.com/@trina.kala"
     target="_blank"
     rel="noopener noreferrer"
   >
+
     <span class="icon">
+
       <i class="fa-brands fa-tiktok"></i>
+
     </span>
 
-    <span class="social-name">TikTok</span>
+    <span class="social-name">
+      TikTok
+    </span>
 
     <span class="arrow">
+
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
     </span>
+
   </a>
 
 
-  <!-- LinkedIn -->
+  <!-- =====================================================
+       LINKEDIN
+  ====================================================== -->
+
   <a
     class="social-link"
     href="https://www.linkedin.com/company/trina-kala/"
     target="_blank"
     rel="noopener noreferrer"
   >
+
     <span class="icon">
+
       <i class="fa-brands fa-linkedin-in"></i>
+
     </span>
 
-    <span class="social-name">LinkedIn</span>
+    <span class="social-name">
+      LinkedIn
+    </span>
 
     <span class="arrow">
+
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
     </span>
+
   </a>
 
+
+  <!-- FOOTER -->
 
   <div class="foot">
     DHAKA • HANDCRAFTED WITH HERITAGE
   </div>
+
 
 </main>
 
